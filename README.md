@@ -31,8 +31,8 @@ You must have [Node.js](https://nodejs.org/) installed on your computer.
 ### Setup Instructions
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/kamalsarhan/Berserk_with_OST.git
-   cd Berserk_with_OST
+   git clone https://github.com/kamalsarhan/manga-with-ost.git
+   cd manga-with-ost
    ```
 
 2. **Install all dependencies:**
