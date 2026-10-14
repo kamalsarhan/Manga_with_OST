@@ -128,8 +128,8 @@ Each **chapter JSON** contains:
 
 ### Setup
 ```bash
-git clone https://github.com/kamaljama/Berserk_with_OST.git
-cd Berserk_with_OST
+git clone https://github.com/kamalsarhan/Manga_with_OST.git
+cd Manga_with_OST
 npm install
 ```
 
