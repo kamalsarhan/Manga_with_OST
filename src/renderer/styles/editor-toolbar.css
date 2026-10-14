@@ -1,0 +1,204 @@
+/* ─── Toolbar ─────────────────────────────────────────────────────────────── */
+.editor-toolbar {
+  padding: 6px 12px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 10;
+  position: relative;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+.toolbar-separator {
+  width: 1px;
+  height: 22px;
+  background: var(--border-color);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.toolbar-tip {
+  flex: 1 1 0;
+  min-width: 60px;
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
+
+.toolbar-zoom {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.toolbar-zoom button {
+  padding: 4px 8px;
+  font-size: 13px;
+  line-height: 1;
+  min-width: 28px;
+  text-align: center;
+}
+
+#zoom-label,
+#reader-zoom-label {
+  min-width: 42px;
+  text-align: center;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.editor-toolbar > button,
+.toolbar-group > button {
+  font-size: 11px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-toolbar-icon {
+  padding: 5px 8px !important;
+  font-size: 14px !important;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MAGIV2 AUTO-DETECT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.magiv2-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-magiv2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px !important;
+  font-size: 11px !important;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #1a1a3e 0%, #0d0d2b 100%);
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  color: #a8b4ff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-magiv2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(100, 100, 255, 0.1) 0%, rgba(160, 100, 255, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-magiv2:hover {
+  border-color: rgba(140, 130, 255, 0.5);
+  color: #c8c0ff;
+  box-shadow:
+    0 0 15px rgba(100, 100, 255, 0.15),
+    inset 0 0 15px rgba(100, 100, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+.btn-magiv2:hover::before {
+  opacity: 1;
+}
+
+.btn-magiv2:active {
+  transform: translateY(0);
+}
+
+.btn-magiv2.detecting {
+  border-color: rgba(140, 130, 255, 0.4);
+  color: #c8c0ff;
+  pointer-events: none;
+  animation: magiv2Pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes magiv2Pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(100, 100, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(100, 100, 255, 0.3), 0 0 50px rgba(140, 100, 255, 0.1);
+  }
+}
+
+.magiv2-btn-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.magiv2-btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.magiv2-spinner {
+  display: none;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(160, 140, 255, 0.3);
+  border-top-color: #a8b4ff;
+  border-radius: 50%;
+  animation: magiv2Spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes magiv2Spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── MagiV2 Status Indicator ─────────────────────────────────────────────── */
+.magiv2-status {
+  font-size: 10px;
+  line-height: 1;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+  cursor: default;
+}
+
+.magiv2-status.online {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  animation: statusGlow 2s ease-in-out infinite;
+}
+
+.magiv2-status.offline {
+  color: #666;
+  text-shadow: none;
+}
+
+@keyframes statusGlow {
+  0%, 100% { text-shadow: 0 0 6px rgba(74, 222, 128, 0.3); }
+  50% { text-shadow: 0 0 12px rgba(74, 222, 128, 0.6); }
+}

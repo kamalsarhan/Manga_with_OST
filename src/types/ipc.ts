@@ -38,6 +38,14 @@ export interface DirectoryConfig {
     chaptersDir: string;
 }
 
+export interface ServerStatus {
+    running: boolean;
+    port: number;
+    localUrl: string;
+    publicUrl: string | null;
+    connections: number;
+}
+
 export interface ElectronAPI {
     // Editor
     selectWorkspace: () => Promise<WorkspaceData | null>;
@@ -69,4 +77,16 @@ export interface ElectronAPI {
     // Central audio links JSON
     loadAudioLinks: () => Promise<Record<string, string>>;
     saveAudioLinks: (links: Record<string, string>) => Promise<boolean>;
+
+    // MagiV2 panel detection
+    detectRegions: (imagePath: string) => Promise<{ success: boolean; panels?: { x: number; y: number; w: number; h: number }[]; error?: string }>;
+    checkMagiv2Status: () => Promise<boolean>;
+    startMagiv2Server: () => Promise<{ success: boolean; error?: string }>;
+
+    // Server
+    startServer: (port?: number) => Promise<{ success: boolean; status?: ServerStatus; error?: string }>;
+    stopServer: () => Promise<{ success: boolean; error?: string }>;
+    getServerStatus: () => Promise<ServerStatus>;
+    startNgrok: (port?: number) => Promise<{ success: boolean; url?: string; error?: string }>;
+    stopNgrok: () => Promise<{ success: boolean; error?: string }>;
 }

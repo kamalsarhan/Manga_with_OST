@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   EDITOR LAYOUT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.editor-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.editor-inner {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* ─── Sidebars ────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: 260px;
+  min-width: 160px;
+  max-width: 450px;
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  overflow: hidden;
+  z-index: 10;
+  transition: width 0.15s ease;
+}
+
+.sidebar-left {
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-right {
+  border-left: 1px solid var(--border-color);
+  width: 310px;
+}
+
+.sidebar-header {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sidebar-header button {
+  font-size: 11px;
+  padding: 6px 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.sidebar-content {
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ─── Section Headers ─────────────────────────────────────────────────────── */
+h3, .section-title {
+  margin: 0 0 10px 0;
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  position: relative;
+  padding-bottom: 8px;
+}
+
+h3::after, .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ─── Resize Handles ──────────────────────────────────────────────────────── */
+.resize-handle {
+  width: 4px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: transparent;
+  transition: background 0.2s;
+  z-index: 20;
+  position: relative;
+}
+
+.resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+
+.resize-handle:hover, .resize-handle:active {
+  background: rgba(229, 9, 20, 0.3);
+}
+
+.resize-handle:hover::after {
+  background: var(--accent);
+  height: 60px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CENTER COLUMN
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.editor-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIDEBAR RIGHT OVERFLOW FIX
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.sidebar-right {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-right .sidebar-content {
+  overflow-x: hidden;
+}

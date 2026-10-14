@@ -25,6 +25,18 @@ const api: ElectronAPI = {
     loadAudioLinks: () => ipcRenderer.invoke('load-audio-links'),
     saveAudioLinks: (links) => ipcRenderer.invoke('save-audio-links', links),
     resetDirectories: () => ipcRenderer.invoke('reset-directories'),
+
+    // MagiV2 panel detection
+    detectRegions: (imagePath) => ipcRenderer.invoke('detect-regions', imagePath),
+    checkMagiv2Status: () => ipcRenderer.invoke('check-magiv2-status'),
+    startMagiv2Server: () => ipcRenderer.invoke('start-magiv2-server'),
+
+    // Server
+    startServer: (port) => ipcRenderer.invoke('start-server', port),
+    stopServer: () => ipcRenderer.invoke('stop-server'),
+    getServerStatus: () => ipcRenderer.invoke('get-server-status'),
+    startNgrok: (port) => ipcRenderer.invoke('start-ngrok', port),
+    stopNgrok: () => ipcRenderer.invoke('stop-ngrok'),
 };
 
 contextBridge.exposeInMainWorld('electronAPI', api);

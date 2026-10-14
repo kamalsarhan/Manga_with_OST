@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   READER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.reader-shell {
+  background: #000;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.reader-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.reader-toolbar-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  pointer-events: auto;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.reader-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.reader-toolbar-zoom {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.reader-toolbar-zoom button {
+  min-width: 32px;
+  border-radius: 999px;
+}
+
+.reader-toolbar-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 8px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+.reader-view {
+  flex: 1;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.reader-view.is-zoomed {
+  cursor: grab;
+}
+
+.reader-view.is-panning {
+  cursor: grabbing;
+}
+
+.reader-zoom-stage {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.reader-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reader-standard-layer {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.reader-cinematic-layer {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reader-mode-a-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.chapter-complete-screen {
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 35%, rgba(229, 9, 20, 0.12), transparent 72%),
+    linear-gradient(180deg, #101018 0%, #050507 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  box-sizing: border-box;
+  color: var(--text-primary);
+}
+
+.chapter-complete-panel {
+  width: min(520px, 100%);
+  text-align: center;
+}
+
+.chapter-complete-kicker {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 14px;
+}
+
+.chapter-complete-panel h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 46px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 36px rgba(229, 9, 20, 0.28);
+}
+
+.chapter-complete-panel p {
+  margin: 14px auto 30px;
+  max-width: 440px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.chapter-complete-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chapter-complete-actions button {
+  min-width: 150px;
+  padding: 11px 18px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chapter-complete-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 24px var(--accent-glow);
+}

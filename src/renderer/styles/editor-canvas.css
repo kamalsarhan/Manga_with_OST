@@ -1,0 +1,54 @@
+/* ─── Canvas Area ─────────────────────────────────────────────────────────── */
+.canvas-area {
+  flex: 1;
+  background:
+    /* Grid pattern */
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    radial-gradient(ellipse at center, #13131f 0%, var(--bg-primary) 100%);
+  background-size: 20px 20px, 20px 20px, 100% 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.canvas-stage {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.canvas-wrapper {
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(229, 9, 20, 0.15),
+    0 0 60px rgba(0, 0, 0, 0.8),
+    0 0 120px rgba(229, 9, 20, 0.05);
+  transform-origin: top left;
+  transition: transform 0.1s ease;
+  flex-shrink: 0;
+}
+
+.canvas-wrapper img {
+  display: block;
+  pointer-events: auto;
+}
+
+.canvas-area.is-pan-ready,
+.canvas-area.is-pan-ready * {
+  cursor: grab !important;
+}
+
+.canvas-area.is-panning,
+.canvas-area.is-panning * {
+  cursor: grabbing !important;
+}
+
+.canvas-area.is-panning {
+  user-select: none;
+}
