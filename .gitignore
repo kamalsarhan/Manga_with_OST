@@ -12,4 +12,7 @@ Chapter*.json
 
 # Local AI panel detection
 local_ai_server/
+magiv2/
 *.patch
+
+.agents/
